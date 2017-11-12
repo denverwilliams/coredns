@@ -73,9 +73,9 @@ container:
   allow_failure: false
   image: buildpack-deps:stretch
   stage: Cross-Cloud
-  variables:
-    KUBERNETES_BRANCH: MUST BE SET
-    CLOUD: MUST BE SET
+  # variables:
+  #   KUBERNETES_BRANCH: MUST BE SET
+  #   CLOUD: MUST BE SET
   script:
     - >
       if [ "$BUILD_TRIGGER" == "yes" ]; then
@@ -105,10 +105,10 @@ container:
   allow_failure: false
   image: buildpack-deps:stretch
   stage: Cross-Project
-  variables:
-    COREDNS_BRANCH: CAN BE SET
-    COREDNS_COMMIT: CAN BE SET
-    CLOUD: MUST BE SET
+  # variables:
+    # COREDNS_BRANCH: CAN BE SET
+    # COREDNS_COMMIT: CAN BE SET
+    # CLOUD: MUST BE SET
   script:
     - >
       if [ "$BUILD_TRIGGER" == "yes" ]; then
@@ -133,12 +133,6 @@ container:
 
 Cross-Cloud:
   <<: *cross-cloud
-  variables:
-    CLOUD: "${CLOUD}"
-    KUBERNETES_BRANCH: "${KUBERNETES_BRANCH}"
 
 Cross-Project:
   <<: *cross-project
-  variables:
-    CLOUD: "${CLOUD}"
-    COREDNS_COMMIT: "${COREDNS_COMMIT}"
