@@ -3,6 +3,8 @@ MAINTAINER Miek Gieben <miek@miek.nl> @miekg
 
 RUN apk --update add bind-tools && rm -rf /var/cache/apk/*
 
+RUN echo 'test'
+
 ADD coredns /coredns
 
 EXPOSE 53 53/udp
